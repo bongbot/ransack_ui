@@ -6,4 +6,7 @@ require "ransack_chronic"
 require 'ransack_ui/adapters/active_record'
 Dir.glob(File.expand_path('../ransack_ui/ransack_overrides/**/*.rb', __FILE__)) {|f| require f }
 
+
 require "ransack"
+
+

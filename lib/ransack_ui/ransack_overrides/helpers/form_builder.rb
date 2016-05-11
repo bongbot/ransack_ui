@@ -44,20 +44,27 @@ module Ransack
             objectify_options(options.except(:include_blank)), @default_options.merge({:class => 'ransack_sort_order'}).merge(html_options)
           )
         else
+
           # searchable_attributes now returns [c, type]
           collection = object.context.searchable_attributes(bases.first).map do |c, type|
+            col_name = Translate.attribute(attr_from_base_and_column(bases.first, c), :context => object.context)
             [
               attr_from_base_and_column(bases.first, c),
-              Translate.attribute(attr_from_base_and_column(bases.first, c), :context => object.context)
+              col_name
             ]
           end
-          @template.collection_select(
+
+          select_field = @template.collection_select(
             @object_name, :name, collection, :first, :last,
             objectify_options(options), @default_options.merge({:class => 'ransack_sort'}).merge(html_options)
-          ) + @template.collection_select(
+          )
+
+          select_order = @template.collection_select(
             @object_name, :dir, [['asc', object.translate('asc')], ['desc', object.translate('desc')]], :first, :last,
             objectify_options(options.except(:include_blank)), @default_options.merge({:class => 'ransack_sort_order'}).merge(html_options)
           )
+
+          select_field + select_order
         end
       end
 

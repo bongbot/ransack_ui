@@ -353,15 +353,15 @@
     setup_select2_options: (query_input, selected_attribute, multiple = false) ->
       query_input.select2
         data: selected_attribute.data('select-options')
-        placeholder: "Please select a #{selected_attribute.text()}"
+        placeholder: t("Please select a") + " " + "#{t(selected_attribute.text())}"
         allowClear: true
         multiple: multiple
         tokenSeparators: [',']
         formatNoMatches:
           if selected_attribute.data('select-options')
-            (t) -> "No matches found."
+            (tt) -> t("No matches found.")
           else
-            (t) -> "Add a search term"
+            (tt) -> t("Add a search term")
         initSelection: (element, callback) ->
           data = []
           unless element.val().trim() == ""
@@ -435,11 +435,11 @@
       container.find('select.ransack_predicate').select2
         width: '160px'
         formatNoMatches: (term) ->
-          "Select a field first"
+          t("Select a field first")
 
       container.find('select.ransack_attribute').select2
         width: '230px'
-        placeholder: "Select a Field"
+        placeholder: t("Select a Field")
         allowClear: true
         formatSelection: (object, container) ->
           # If initializing and element is not present,
@@ -465,7 +465,7 @@
 
       @element.find('select.ransack_sort').select2
         width: '230px'
-        placeholder: "Select a Field"
+        placeholder: t("Select a Field")
 
     init_button_group_select: (containers) ->
       containers.find('select.ransack_combinator, select.ransack_sort_order').button_group_select()
