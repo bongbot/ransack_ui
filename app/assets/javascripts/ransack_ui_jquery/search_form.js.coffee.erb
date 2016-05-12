@@ -312,8 +312,8 @@
             multi_query.select2
               tags: []
               tokenSeparators: [',']
-              formatNoMatches: (t) ->
-                "Add a search term"
+              formatNoMatches: (tt) ->
+                t("Add a search term")
 
         multi_query.select2('val', values)
 
