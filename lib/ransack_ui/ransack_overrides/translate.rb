@@ -3,7 +3,7 @@ module Ransack
     def self.default_interpolation(associated_class)
       translated_attr = I18n.translate("ransack." + @attr_name)
       if translated_attr.start_with?("translation missing")
-        puts "TTT:FIELD: " + ("ransack." + @attr_name).inspect
+        puts "TTT:FIELD:NOT_TRANSLATED: " + ("ransack." + @attr_name).inspect
       end
 
       [
