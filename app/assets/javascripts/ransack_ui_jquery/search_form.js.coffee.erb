@@ -321,7 +321,7 @@
       selected_attribute_val = selected_attribute.val()
       # Set up Select2 for query input
       query_input.select2
-        placeholder: "Search #{selected_attribute.data('ajax-entity')}"
+        placeholder: "#{t('Search')} #{selected_attribute.data('ajax-entity')}"
         minimumInputLength: 1
         allowClear: true
         multiple: multiple
